@@ -64,11 +64,11 @@ public class GeolocationServiceTest {
         request.setLat(lat);
 
         Mockito.when(geolocationFormatter.formatCoordinates(eq(request.getLon()), eq(request.getLat()))).thenReturn(coordinates);
-        Mockito.when(geolocationRepository.getByLonAndLat(eq(coordinates.getLon()), eq(coordinates.getLat()))).thenReturn(new GeolocationEntity());
+        Mockito.when(geolocationRepository.findFirstByLonAndLat(eq(coordinates.getLon()), eq(coordinates.getLat()))).thenReturn(new GeolocationEntity());
 
         geolocationService.getGeolocation(request);
 
-        Mockito.verify(geolocationRepository, Mockito.times(1)).getByLonAndLat(eq(coordinates.getLon()), eq(coordinates.getLat()));
+        Mockito.verify(geolocationRepository, Mockito.times(1)).findFirstByLonAndLat(eq(coordinates.getLon()), eq(coordinates.getLat()));
         Mockito.verify(geolocationMapper, Mockito.times(1)).map(any(GeolocationEntity.class), anyString());
         Mockito.verify(mapService, Mockito.times(0)).getGeolocation(anyString());
     }

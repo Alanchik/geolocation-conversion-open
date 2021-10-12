@@ -49,7 +49,7 @@ public class GeolocationService {
 
     private GeolocationResponse getGeolocationByCoordinates(String lon, String lat) {
         Coordinates coordinates = geolocationRequestFormatter.formatCoordinates(lon, lat);
-        GeolocationEntity existingGeolocation = geolocationRepository.getByLonAndLat(coordinates.getLon(), coordinates.getLat());
+        GeolocationEntity existingGeolocation = geolocationRepository.findFirstByLonAndLat(coordinates.getLon(), coordinates.getLat());
         String search = String.join(", ", coordinates.getLon(), coordinates.getLat());
         if (nonNull(existingGeolocation)) {
             return geolocationMapper.map(existingGeolocation, search);

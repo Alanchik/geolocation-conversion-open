@@ -9,5 +9,5 @@ public interface GeolocationRepository extends JpaRepository<GeolocationEntity, 
 
     GeolocationEntity getBySearchHash(String searchHash);
 
-    GeolocationEntity getByLonAndLat(String lon, String lat);
+    GeolocationEntity findFirstByLonAndLat(String lon, String lat);
 }
