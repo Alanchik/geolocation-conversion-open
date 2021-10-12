@@ -1,0 +1,21 @@
+server:
+  servlet:
+    context-path: /geolocation-conversion/api/v1
+  port: 8081
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: root
+    url: jdbc:postgresql://localhost:5432/geolocation-conversion
+
+  flyway:
+    driver-class-name: org.postgresql.Driver
+    user: postgres
+    password: root
+    url: jdbc:postgresql://localhost:5432/geolocation-conversion
+
+geolocation-conversion:
+  maps-api:
+    key: Aqm8RL-Z1MjQ7sSfxl5zz-3RNbQVHx22rhGiX6iTEwm7XUTdPDj4tu9BBFyGK-dj
